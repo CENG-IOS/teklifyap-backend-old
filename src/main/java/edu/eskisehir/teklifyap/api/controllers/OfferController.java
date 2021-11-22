@@ -4,6 +4,7 @@ import edu.eskisehir.teklifyap.business.abstracts.OfferService;
 import edu.eskisehir.teklifyap.core.utilities.results.Result;
 import edu.eskisehir.teklifyap.entities.concretes.Offer;
 import edu.eskisehir.teklifyap.entities.concretes.User;
+import org.apache.tomcat.util.json.ParseException;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -24,8 +25,13 @@ public class OfferController {
     }
 
     @PostMapping("/getOffers")
-    public Result getOffersByUser(@RequestBody User user) {
-        return this.offerService.getOffersByUser(user);
+    public Result getOffersByUser(@RequestBody String id) {
+        try {
+            return this.offerService.getOffersByUser(id);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return new Result(false,"Başarısız!");
+        }
     }
 
     @PostMapping("/updateStatus/{id}/{status}")
