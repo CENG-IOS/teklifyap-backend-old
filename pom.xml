@@ -15,7 +15,6 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-        <frontend.dir>${project.basedir}/src/main/react</frontend.dir>
     </properties>
     <dependencies>
         <dependency>
@@ -64,77 +63,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
-                <executions>
-                    <execution>
-                        <id>npm-install</id>
-
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-
-                        <phase>prepare-package</phase>
-
-                        <configuration>
-                            <executable>npm</executable>
-                            <arguments>
-                                <argument>install</argument>
-                                <argument>--no-audit</argument>
-                            </arguments>
-                            <workingDirectory>${frontend.dir}</workingDirectory>
-                        </configuration>
-
-                    </execution>
-                    <execution>
-                        <id>npm-run-build</id>
-
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-
-                        <phase>prepare-package</phase>
-
-                        <configuration>
-                            <executable>npm</executable>
-                            <arguments>
-                                <argument>run</argument>
-                                <argument>build</argument>
-                            </arguments>
-                            <workingDirectory>${frontend.dir}</workingDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
-
-                <executions>
-                    <execution>
-                        <id>copy-react-build</id>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <phase>prepare-package</phase>
-                        <configuration>
-                            <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${frontend.dir}/build</directory>
-                                    <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
 
