@@ -6,6 +6,8 @@ import edu.eskisehir.teklifyap.entities.concretes.OfferMaterial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/offerMaterial")
 @CrossOrigin
@@ -26,6 +28,11 @@ public class OfferMaterialController {
     @PostMapping("/make")
     public Result makeOffer(@RequestBody OfferMaterial offerMaterial){
         return offerMaterialService.makeOffer(offerMaterial);
+    }
+
+    @PostMapping("/makes")
+    public Result makeOffers(@RequestBody List<OfferMaterial> offerMaterials){
+        return offerMaterialService.makeOffers(offerMaterials);
     }
 
 }

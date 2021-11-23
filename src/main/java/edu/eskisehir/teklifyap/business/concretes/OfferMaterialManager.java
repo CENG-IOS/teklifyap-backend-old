@@ -32,4 +32,12 @@ public class OfferMaterialManager implements OfferMaterialService {
         this.offerMaterialDao.save(offerMaterial);
         return new DataResult<>("ok", true);
     }
+
+    @Override
+    public Result makeOffers(List<OfferMaterial> offerMaterials) {
+        for (OfferMaterial offerMaterial : offerMaterials) {
+            makeOffer(offerMaterial);
+        }
+        return new Result(true,"denendi");
+    }
 }
