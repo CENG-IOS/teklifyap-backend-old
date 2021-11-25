@@ -11,4 +11,5 @@ public interface OfferMaterialService {
     Result getAll();
     Result makeOffer(OfferMaterial offerMaterial);
     Result makeOffers(List<OfferMaterial> offerMaterials);
+    Result getMaterialsByOffer(int id);
 }

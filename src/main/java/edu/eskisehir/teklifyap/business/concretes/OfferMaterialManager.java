@@ -38,6 +38,12 @@ public class OfferMaterialManager implements OfferMaterialService {
         for (OfferMaterial offerMaterial : offerMaterials) {
             makeOffer(offerMaterial);
         }
-        return new Result(true,"denendi");
+        return new Result(true, "denendi");
+    }
+
+    @Override
+    public Result getMaterialsByOffer(int id) {
+        List<OfferMaterial> offerMaterial = offerMaterialDao.getMaterialsByOffer(id);
+        return new DataResult<>(offerMaterial, true);
     }
 }

@@ -1,5 +1,6 @@
 package edu.eskisehir.teklifyap.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ public class Material implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-//    @JsonIgnore
+    @JsonIgnore
     private User user;
 
     @Column(name = "material_name")

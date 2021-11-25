@@ -6,13 +6,10 @@ import edu.eskisehir.teklifyap.core.utilities.results.Result;
 import edu.eskisehir.teklifyap.core.utilities.results.SuccessDataResult;
 import edu.eskisehir.teklifyap.dataAccess.abstracts.OfferDao;
 import edu.eskisehir.teklifyap.entities.concretes.Offer;
-import edu.eskisehir.teklifyap.entities.concretes.User;
 import org.apache.tomcat.util.json.JSONParser;
 import org.apache.tomcat.util.json.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 
 @Service
@@ -33,7 +30,7 @@ public class OfferManager implements OfferService {
     public Result getOffersByUser(String id) throws ParseException {
         JSONParser jsonParser = new JSONParser(id);
         int a = Integer.parseInt((String) jsonParser.parseObject().get("id"));
-        return new DataResult<>(offerDao.custommethod(a), true);
+        return new DataResult<>(offerDao.getOffersByUserID(a), true);
     }
 
     @Override
