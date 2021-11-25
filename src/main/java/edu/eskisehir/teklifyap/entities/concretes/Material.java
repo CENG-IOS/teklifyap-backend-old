@@ -20,7 +20,7 @@ public class Material implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnore
+//    @JsonIgnore
     private User user;
 
     @Column(name = "material_name")
