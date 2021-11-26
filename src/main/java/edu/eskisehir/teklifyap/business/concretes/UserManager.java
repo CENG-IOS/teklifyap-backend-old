@@ -5,6 +5,7 @@ import edu.eskisehir.teklifyap.dataAccess.abstracts.UserDao;
 import edu.eskisehir.teklifyap.core.utilities.results.*;
 import edu.eskisehir.teklifyap.entities.concretes.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,29 +19,21 @@ public class UserManager implements UserService {
         super();
         this.userDao = userDao;
     }
+
     @Override
     public DataResult<List<User>> getAll() {
-        return new DataResult<>(userDao.findAll(),true);
+        return new DataResult<>(userDao.findAll(), true);
     }
 
     @Override
     public Result add(User user) {
-        int count = 0;
-        for (int i = 0; i < userDao.findAll().size(); i++) {
-            if (userDao.findAll().get(i).getUser_email().trim().equals(user.getUser_email())) {
-                count++;
-                break;
-            }
+        User created;
+        try {
+            created = this.userDao.save(user);
+        } catch (DataIntegrityViolationException e) {
+            return new Result(false, "Bu email sisteme zaten kayıtlı.");
         }
-
-        if (count == 1) {
-
-            return new ErrorDataResult<>("USER NOT ADDED");
-
-        } else {
-            this.userDao.save(user);
-            return new SuccessDataResult<>("USER ADDED");
-        }
+        return new DataResult<>( created.getUser_id(),true);
     }
 
     @Override

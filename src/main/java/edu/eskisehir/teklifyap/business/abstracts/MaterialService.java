@@ -14,4 +14,5 @@ public interface MaterialService {
     List<Material> getMaterials(int id);
     Result delete(String deleted) throws ParseException;
     Result add(Material material);
+    Result adds(List<Material> materials);
 }

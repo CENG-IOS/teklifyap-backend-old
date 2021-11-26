@@ -38,6 +38,11 @@ public class MaterialController {
         return materialService.add(material);
     }
 
+    @PostMapping("/adds")
+    public  Result adds(@RequestBody List<Material> materials){
+        return materialService.adds(materials);
+    }
+
     @PostMapping("/delete")
     public Result delete(@RequestBody String deleted) {
         try {

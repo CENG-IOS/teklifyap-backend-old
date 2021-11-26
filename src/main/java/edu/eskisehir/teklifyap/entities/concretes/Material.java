@@ -32,5 +32,8 @@ public class Material implements Serializable {
     @Column(name = "material_is_verified")
     private short material_is_verified;
 
+    @Column(name = "is_fixed")
+    private short is_fixed;
+
 
 }

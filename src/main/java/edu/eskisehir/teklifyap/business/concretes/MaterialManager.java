@@ -48,7 +48,13 @@ public class MaterialManager implements MaterialService {
     @Override
     public Result add(Material material) {
         materialDao.save(material);
-        return new Result(true,"Eklendi.");
+        return new Result(true, "Eklendi.");
+    }
+
+    @Override
+    public Result adds(List<Material> materials) {
+        materialDao.saveAll(materials);
+        return new Result(true);
     }
 
 
