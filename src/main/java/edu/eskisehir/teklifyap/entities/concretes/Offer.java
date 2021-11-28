@@ -44,6 +44,9 @@ public class Offer implements Serializable {
     @Column(name = "offer_username")
     private String offer_username;
 
+    @Column(name = "offer_kdv_price")
+    private double offer_kdv_price;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
