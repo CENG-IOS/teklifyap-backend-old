@@ -22,7 +22,6 @@ public class MaterialManager implements MaterialService {
     public MaterialManager(MaterialDao materialDao) {
         super();
         this.materialDao = materialDao;
-
     }
 
     @Override
@@ -55,6 +54,12 @@ public class MaterialManager implements MaterialService {
     public Result adds(List<Material> materials) {
         materialDao.saveAll(materials);
         return new Result(true);
+    }
+
+    @Override
+    public Result update(Material material) {
+        materialDao.save(material);
+        return new Result(true,"Güncellendi!");
     }
 
 

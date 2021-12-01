@@ -29,7 +29,4 @@ public class OfferMaterial {
 
     @Column(name = "offer_material_price_per_unit")
     private int offer_material_price_per_unit;
-
-    @Column(name = "offer_material_unit_quantity")
-    private int offer_material_unit_quantity;
 }

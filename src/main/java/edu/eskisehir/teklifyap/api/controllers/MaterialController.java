@@ -53,4 +53,9 @@ public class MaterialController {
         }
     }
 
+    @PostMapping("/update")
+    public Result update(@RequestBody Material material){
+        return materialService.update(material);
+    }
+
 }

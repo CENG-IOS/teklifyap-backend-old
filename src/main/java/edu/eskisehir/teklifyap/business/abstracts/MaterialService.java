@@ -15,4 +15,5 @@ public interface MaterialService {
     Result delete(String deleted) throws ParseException;
     Result add(Material material);
     Result adds(List<Material> materials);
+    Result update(Material material);
 }

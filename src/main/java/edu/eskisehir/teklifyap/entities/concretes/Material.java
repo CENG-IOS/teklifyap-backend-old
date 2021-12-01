@@ -35,5 +35,9 @@ public class Material implements Serializable {
     @Column(name = "is_fixed")
     private short is_fixed;
 
+    @Column(name = "material_price_per_unit")
+    private int material_price_per_unit;
+
+
 
 }
